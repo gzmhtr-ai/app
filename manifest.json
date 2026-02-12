@@ -1,6 +1,6 @@
 {
   "name": "Inscripcones Clubes CBTis 217",
-  "short_name": "Clubes",
+  "short_name": "Clubes CBTis 217",
   "description": "App nativa desde Google Apps Script",
   "start_url": "./",
   "display": "standalone",
@@ -10,11 +10,12 @@
   "icons": [
     {
       "src": "https://cdn-icons-png.flaticon.com/128/5361/5361551.png",
-      "sizes": "256x256",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
 }
+
 
 
 
