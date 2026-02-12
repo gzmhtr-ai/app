@@ -2,7 +2,7 @@
   "name": "Inscripcones Clubes CBTis 217",
   "short_name": "Clubes",
   "description": "App nativa desde Google Apps Script",
-  "start_url": "index.html",
+  "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
@@ -14,5 +14,5 @@
       "type": "image/png"
     }
   ]
-
 }
+
