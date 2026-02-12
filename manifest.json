@@ -1,6 +1,6 @@
 {
-  "name": "Mi App Profesional",
-  "short_name": "MiApp",
+  "name": "Inscripcones Clubes CBTis 217",
+  "short_name": "Clubes",
   "description": "App nativa desde Google Apps Script",
   "start_url": "index.html",
   "display": "standalone",
@@ -14,4 +14,5 @@
       "type": "image/png"
     }
   ]
+
 }
