@@ -34,11 +34,12 @@
   </iframe>
 
   <script>
-    // Registro del Service Worker para que Windows no dude
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js');
-    }
-  </script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js') // El './' es clave
+      .then(() => console.log("Instalación habilitada"));
+  }
+</script>
 </body>
 </html>
+
 
