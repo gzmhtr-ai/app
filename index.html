@@ -44,5 +44,15 @@
     // No agregamos Service Worker aquí para evitar errores de protocolo.
     // Chrome en Windows permite la instalación si el manifiesto es válido y el sitio es HTTPS.
   </script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker registrado', reg))
+        .catch(err => console.log('Error al registrar SW', err));
+    });
+  }
+</script>
 </body>
+
 </html>
