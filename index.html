@@ -35,11 +35,16 @@
 
   <script>
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js') // El './' es clave
-      .then(() => console.log("Instalación habilitada"));
+    window.addEventListener('load', () => {
+      // El punto antes de la barra (./) es vital en GitHub Pages
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('¡Botón de instalación activo!', reg))
+        .catch(err => console.error('Error en el SW:', err));
+    });
   }
 </script>
 </body>
 </html>
+
 
 
