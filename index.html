@@ -3,56 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Mi App Nativa</title>
+  <title>Mi App Profesional</title>
   
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href='data:application/manifest+json,{"name":"Mi App Pro","short_name":"MiApp","display":"standalone","start_url":"index.html","background_color":"#ffffff","theme_color":"#2563eb","icons":[{"src":"https://cdn-icons-png.flaticon.com/512/5968/5968534.png","sizes":"512x512","type":"image/png"}]}'>
+  
   <meta name="theme-color" content="#2563eb">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <style>
-    body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: #f3f4f6; }
+    body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: #ffffff; }
     iframe { border: none; width: 100%; height: 100%; display: block; }
-    
-    /* Pantalla de carga estética */
-    #loading {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: white; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; z-index: 999;
-      font-family: sans-serif; color: #444;
+    #loader {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: sans-serif; text-align: center; color: #666;
     }
-    .spinner {
-      width: 40px; height: 40px; border: 4px solid #f3f3f3;
-      border-top: 4px solid #2563eb; border-radius: 50%;
-      animation: spin 1s linear infinite; margin-bottom: 15px;
-    }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
-  <div id="loading">
-    <div class="spinner"></div>
-    <p>Iniciando aplicación...</p>
+  <div id="loader">
+    <div style="font-size: 32px; margin-bottom: 10px;">⚙️</div>
+    <p>Conectando con el servidor...</p>
   </div>
 
   <iframe 
     src="https://script.google.com/macros/s/AKfycbw0s89q2vL4hdrEsnP3c53rQaA6Cagb7_BLp1jTwGq6sYz74orKEaXPzFTYNlrGqhdAtA/exec" 
-    onload="document.getElementById('loading').style.display='none';">
+    sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-modals"
+    allow="geolocation; microphone; camera; encrypted-media"
+    onload="document.getElementById('loader').style.display='none';">
   </iframe>
 
   <script>
-    // No agregamos Service Worker aquí para evitar errores de protocolo.
-    // Chrome en Windows permite la instalación si el manifiesto es válido y el sitio es HTTPS.
+    // Registro del Service Worker para que Windows no dude
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
   </script>
-  <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then(reg => console.log('Service Worker registrado', reg))
-        .catch(err => console.log('Error al registrar SW', err));
-    });
-  }
-</script>
 </body>
-
 </html>
+
